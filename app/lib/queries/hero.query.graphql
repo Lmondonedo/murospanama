@@ -1,0 +1,29 @@
+query HomePage {
+  homePage {
+    documentId
+    description
+    images {
+      documentId
+      name
+      alternativeText
+      caption
+      width
+      height
+      formats
+      hash
+      ext
+      mime
+      size
+      url
+      previewUrl
+      provider
+      provider_metadata
+      createdAt
+      updatedAt
+      publishedAt
+    }
+    createdAt
+    updatedAt
+    publishedAt
+  }
+}

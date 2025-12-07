@@ -1,0 +1,38 @@
+query TestimonialPage {
+  testimonialPage {
+    title
+    description
+    isRandom
+  }
+  testimonials {
+    documentId
+    authorName
+    titleOrLocation
+    content
+    avatar {
+      documentId
+      name
+      alternativeText
+      caption
+      width
+      height
+      formats
+      hash
+      ext
+      mime
+      size
+      url
+      previewUrl
+      provider
+      provider_metadata
+      createdAt
+      updatedAt
+      publishedAt
+    }
+    order
+    isFeatured
+    createdAt
+    updatedAt
+    publishedAt
+  }
+}
