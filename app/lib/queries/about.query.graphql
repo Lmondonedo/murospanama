@@ -1,0 +1,37 @@
+query About {
+  about {
+    documentId
+    title
+
+    description
+    createdAt
+    updatedAt
+    publishedAt
+    keyStats {
+      id
+      value
+      label
+    }
+    image {
+      documentId
+      name
+      alternativeText
+      caption
+      width
+      height
+      formats
+      hash
+      ext
+      mime
+      size
+      url
+      previewUrl
+      provider
+      provider_metadata
+
+      createdAt
+      updatedAt
+      publishedAt
+    }
+  }
+}

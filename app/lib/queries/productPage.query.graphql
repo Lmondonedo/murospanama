@@ -1,0 +1,10 @@
+query ProductPage {
+  productPage {
+    documentId
+    title
+    description
+    createdAt
+    updatedAt
+    publishedAt
+  }
+}
