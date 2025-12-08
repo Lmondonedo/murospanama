@@ -23,7 +23,7 @@ export async function getProductPageData(): Promise<ProductPageData> {
     60 // Cache for 60 seconds
   );
 
-  console.log("🚀 GraphQL Response:", JSON.stringify(response, null, 2));
+  //console.log("🚀 GraphQL Response:", JSON.stringify(response, null, 2));
   // Devolvemos los atributos de manera plana y unificada
   return {
     title: response.productPage.title,

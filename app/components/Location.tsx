@@ -5,6 +5,23 @@ import Image from "next/image";
 import { StrapiUploadFile } from "../types/strapi-dynamic";
 import { getImageInfo } from "../utils/imageUtils";
 import MapSection from "./MapSection";
+import FullSchedule from "./FullSchedule";
+
+type ScheduleItem = {
+  day: string;
+  open: string;
+  close: string;
+  isOpen: boolean;
+};
+
+type ScheduleException = {
+  id: string;
+  date: string;
+  state: string;
+  reason: string;
+  open: string;
+  close: string;
+};
 
 interface LocationProps {
   title: string;
@@ -12,6 +29,8 @@ interface LocationProps {
   fullAddress: string;
   mapLink: string;
   map: StrapiUploadFile | null;
+  schedule: ScheduleItem[];
+  scheduleExceptions: ScheduleException[];
 }
 
 export default function Location({
@@ -20,6 +39,8 @@ export default function Location({
   fullAddress,
   mapLink,
   map,
+  schedule,
+  scheduleExceptions,
 }: LocationProps) {
   return (
     <section className="py-24 bg-gradient-to-br from-primary/5 via-white to-secondary/5">
@@ -83,17 +104,9 @@ export default function Location({
                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <div>
+                <div className="w-full">
                   <p className="text-sm font-semibold text-primary/70 mb-2">Horario de Atención</p>
-                  <p className="text-base text-[#133f65]">
-                    <span className="font-semibold">Lunes a Viernes:</span> 8:00 AM - 5:00 PM
-                  </p>
-                  <p className="text-base text-[#133f65]">
-                    <span className="font-semibold">Sábados:</span> 8:00 AM - 12:00 PM
-                  </p>
-                  <p className="text-base text-[#133f65] mt-1">
-                    <span className="font-semibold">Domingos:</span> Cerrado
-                  </p>
+                  <FullSchedule schedule={schedule} />
                 </div>
               </div>
 

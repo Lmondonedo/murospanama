@@ -3,15 +3,34 @@
 import { useState, useEffect, type MouseEvent } from "react";
 import Image from "next/image"; // Necesitas importar Image para el logo
 import { StrapiUploadFile } from "../types/strapi-dynamic";
+import Schedule from "./Schedule";
+
+type ScheduleItem = {
+  day: string;
+  open: string;
+  close: string;
+  isOpen: boolean;
+};
+
+type ScheduleException = {
+  id: string;
+  date: string;
+  state: string;
+  reason: string;
+  open: string;
+  close: string;
+};
 
 // Define los tipos de las props que vienen del servidor (adaptados a tu GlobalData)
 interface NavigationProps {
   siteName: string;
   // Simplificamos el tipo de logo a lo que necesitas para renderizar
   logo: (StrapiUploadFile & { mainLogoUrl: string }) | null;
+  schedule: ScheduleItem[];
+  scheduleExceptions: ScheduleException[];
 }
 
-export default function Navigation({ siteName, logo }: NavigationProps) {
+export default function Navigation({ siteName, logo, schedule, scheduleExceptions }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -141,7 +160,6 @@ export default function Navigation({ siteName, logo }: NavigationProps) {
                   alt={logo.alternativeText || siteName}
                   width={500}
                   height={200}
-                  quality={100}
                   priority={true} // Se renderiza en el cliente, pero es el logo
                 />
               </div>
@@ -162,6 +180,11 @@ export default function Navigation({ siteName, logo }: NavigationProps) {
               </>
             )}
           </a>
+
+          {/* Schedule - Mobile (between logo and burger) */}
+          <div className="md:hidden">
+            <Schedule schedule={schedule} scheduleExceptions={scheduleExceptions} />
+          </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
@@ -229,9 +252,7 @@ export default function Navigation({ siteName, logo }: NavigationProps) {
                 </a>
               </div>
               <div className="mt-1">
-                <span className="text-xs text-primary/70 bg-[#ffd9c0] px-3 py-1 rounded-full font-bold">
-                  Lunes a Viernes: 8am - 5pm | Sábados: 8am - 12pm
-                </span>
+                <Schedule schedule={schedule} scheduleExceptions={scheduleExceptions} />
               </div>
             </div>
             <a

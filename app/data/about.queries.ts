@@ -53,7 +53,7 @@ export async function getAboutPageData(): Promise<About> {
       {}, // No variables needed for this query
       60 // Cache for 60 seconds
     );
-    console.log("🚀 GraphQL Response:", JSON.stringify(response, null, 2));
+    //console.log("🚀 GraphQL Response:", JSON.stringify(response, null, 2));
     // Devolvemos los atributos de manera plana y unificada
     return {
       documentId: response.about.documentId,

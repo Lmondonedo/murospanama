@@ -45,7 +45,7 @@ export async function getCompanyDetails(): Promise<CompanyDetails> {
     60 // Cache for 60 seconds
   );
 
-  console.log("🚀 GraphQL Response:", JSON.stringify(response, null, 2));
+  //console.log("🚀 GraphQL Response:", JSON.stringify(response, null, 2));
   // Devolvemos los atributos de manera plana y unificada
   return {
     name: response.company.name,

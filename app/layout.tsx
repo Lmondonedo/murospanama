@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const siteName = globalConfig.siteName || "Muros Panamá";
   const description = globalConfig.siteDescription ||
     "Especialistas en la instalación de cercas de PVC de alta calidad.";
-    
+
   return {
     // Usar el nombre del sitio cargado de Strapi
     title: {
@@ -48,6 +48,8 @@ export default async function RootLayout({
   // 2. Extraer el logo (asumiendo que ya está pre-procesado con fullUrl)
   const siteName = globalConfig.siteName || "Muros Panamá";
   const logo = companyDetails.logo;
+  const schedule = companyDetails.schedule;
+  const scheduleExceptions = companyDetails.scheduleExceptions;
 
   //console.log("🌐 Global Config in Layout:", { siteName, logo });
 
@@ -57,7 +59,12 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {/* 2. Pasar la data de Servidor (globalConfig) al componente de Cliente (Navigation) */}
-        <Navigation siteName={siteName} logo={logo} />
+        <Navigation 
+          siteName={siteName} 
+          logo={logo} 
+          schedule={schedule}
+          scheduleExceptions={scheduleExceptions}
+        />
 
         <main>
           {/* Este es el contenido específico de cada página (About, Home, etc.) */}

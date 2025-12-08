@@ -42,7 +42,7 @@ export async function fetchStrapiData<T>(
     }
 
     const data = await response.json();
-    console.log("Datos recibidos de Strapi:", data);
+    //console.log("Datos recibidos de Strapi:", data);
     return data;
   } catch (error) {
     console.error("Error en fetchStrapiData:", error);

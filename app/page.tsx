@@ -14,6 +14,7 @@ import {
   prioritizeTestimonials,
 } from "./data/testimonialPage.queries";
 import { getLocationPageData } from "./data/location.queries";
+import { getCompanyDetails } from "./data/company.queries";
 
 export default async function Home() {
   const [
@@ -23,6 +24,7 @@ export default async function Home() {
     testimonialPageData,
     locationPageData,
     products,
+    companyDetails,
   ] = await Promise.all([
     getHeroPageData(),
     getAboutPageData(),
@@ -30,10 +32,11 @@ export default async function Home() {
     getTestimonialPageData(),
     getLocationPageData(),
     getProducts(),
+    getCompanyDetails(),
   ]);
 
   const { testimonialPage, testimonials } = testimonialPageData;
-  const { title, description, fullAddress, mapLink, map } = locationPageData;
+  const { title, description } = locationPageData;
   const finalTestimonials = prioritizeTestimonials(
     testimonials,
     testimonialPage.isRandom
@@ -53,9 +56,11 @@ export default async function Home() {
       <Location
         title={title}
         description={description}
-        fullAddress={fullAddress}
-        mapLink={mapLink}
-        map={map}
+        fullAddress={companyDetails.address}
+        mapLink={companyDetails.mapLocation}
+        map={null}
+        schedule={companyDetails.schedule}
+        scheduleExceptions={companyDetails.scheduleExceptions}
       />
 
       {/* Footer */}

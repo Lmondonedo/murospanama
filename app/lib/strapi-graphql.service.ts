@@ -68,7 +68,7 @@ export async function graphqlFetch<T>(
   }
   // Obtenemos el query desde el archivo .graphql
   const query = await loadGraphQLQuery(queryName);
-  console.log("🚀 GraphQL Fetch - Endpoint:", API_URL);
+  //console.log("🚀 GraphQL Fetch - Endpoint:", API_URL);
   //console.log("🚀 Ejecutando consulta GraphQL:", query, variables);
   try {
     const response = await fetch(API_URL, {
