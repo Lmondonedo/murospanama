@@ -7,6 +7,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import { getCompanyDetails } from "./data/company.queries";
+import FloatingButtons from "./components/FloatingButtons";
 
 // Importar los componentes de layout (asume que los creaste)
 
@@ -50,6 +51,7 @@ export default async function RootLayout({
   const logo = companyDetails.logo;
   const schedule = companyDetails.schedule;
   const scheduleExceptions = companyDetails.scheduleExceptions;
+  const instagramUrl = companyDetails.instagram || "https://www.instagram.com";
 
   //console.log("🌐 Global Config in Layout:", { siteName, logo });
 
@@ -70,6 +72,9 @@ export default async function RootLayout({
           {/* Este es el contenido específico de cada página (About, Home, etc.) */}
           {children}
         </main>
+
+        {/* Floating Buttons */}
+        <FloatingButtons instagramUrl={instagramUrl} />
       </body>
     </html>
   );
