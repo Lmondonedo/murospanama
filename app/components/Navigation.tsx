@@ -134,12 +134,14 @@ export default function Navigation({ siteName, logo }: NavigationProps) {
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
             {logo?.mainLogoUrl ? (
-              <div className="flex items-center transition-transform md:scale-150">
+              <div className="flex items-center w-32 md:w-48 transition-all">
                 <Image
+                  className="w-full h-auto"
                   src={logo.mainLogoUrl}
                   alt={logo.alternativeText || siteName}
-                  width={100}
-                  height={100}
+                  width={500}
+                  height={200}
+                  quality={100}
                   priority={true} // Se renderiza en el cliente, pero es el logo
                 />
               </div>
@@ -163,62 +165,75 @@ export default function Navigation({ siteName, logo }: NavigationProps) {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            <a
-              href="#productos"
-              aria-current={activeId === "productos" ? "page" : undefined}
-              className={`transition-colors ${
-                activeId === "productos" ? "font-bold" : "font-medium"
-              } ${
-                isScrolled
-                  ? "text-[#133f65] hover:text-[#e37329]"
-                  : "text-[#133f65] hover:text-[#e37329]"
-              }`}
-              onClick={handleNavClick("productos")}
-            >
-              Productos
-            </a>
-            <a
-              href="#nosotros"
-              aria-current={activeId === "nosotros" ? "page" : undefined}
-              className={`transition-colors ${
-                activeId === "nosotros" ? "font-bold" : "font-medium"
-              } ${
-                isScrolled
-                  ? "text-[#133f65] hover:text-[#e37329]"
-                  : "text-[#133f65] hover:text-[#e37329]"
-              }`}
-              onClick={handleNavClick("nosotros")}
-            >
-              Nosotros
-            </a>
-            <a
-              href="#mision-vision"
-              aria-current={activeId === "mision-vision" ? "page" : undefined}
-              className={`transition-colors ${
-                activeId === "mision-vision" ? "font-bold" : "font-medium"
-              } ${
-                isScrolled
-                  ? "text-[#133f65] hover:text-[#e37329]"
-                  : "text-[#133f65] hover:text-[#e37329]"
-              }`}
-              onClick={handleNavClick("mision-vision")}
-            >
-              Misión y Visión
-            </a>
-            <a
-              href="#testimonios"
-              aria-current={activeId === "testimonios" ? "page" : undefined}
-              className={`transition-colors ${
-                activeId === "testimonios" ? "font-bold" : "font-medium"
-              } ${
-                isScrolled
-                  ? "text-[#133f65] hover:text-[#e37329]"
-                  : "text-[#133f65] hover:text-[#e37329]"
-              }`}
-              onClick={handleNavClick("testimonios")}
-            >
-              Testimonios
-            </a>
+            <div className="flex flex-col items-end">
+              <div className="flex items-center gap-8">
+                <a
+                  href="#productos"
+                  aria-current={activeId === "productos" ? "page" : undefined}
+                  className={`transition-colors ${
+                    activeId === "productos" ? "font-bold" : "font-medium"
+                  } ${
+                    isScrolled
+                      ? "text-[#133f65] hover:text-[#e37329]"
+                      : "text-[#133f65] hover:text-[#e37329]"
+                  }`}
+                  onClick={handleNavClick("productos")}
+                >
+                  Productos
+                </a>
+                <a
+                  href="#nosotros"
+                  aria-current={activeId === "nosotros" ? "page" : undefined}
+                  className={`transition-colors ${
+                    activeId === "nosotros" ? "font-bold" : "font-medium"
+                  } ${
+                    isScrolled
+                      ? "text-[#133f65] hover:text-[#e37329]"
+                      : "text-[#133f65] hover:text-[#e37329]"
+                  }`}
+                  onClick={handleNavClick("nosotros")}
+                >
+                  Nosotros
+                </a>
+                <a
+                  href="#mision-vision"
+                  aria-current={
+                    activeId === "mision-vision" ? "page" : undefined
+                  }
+                  className={`transition-colors ${
+                    activeId === "mision-vision" ? "font-bold" : "font-medium"
+                  } ${
+                    isScrolled
+                      ? "text-[#133f65] hover:text-[#e37329]"
+                      : "text-[#133f65] hover:text-[#e37329]"
+                  }`}
+                  onClick={handleNavClick("mision-vision")}
+                >
+                  Misión y Visión
+                </a>
+                <a
+                  href="#testimonios"
+                  aria-current={
+                    activeId === "testimonios" ? "page" : undefined
+                  }
+                  className={`transition-colors ${
+                    activeId === "testimonios" ? "font-bold" : "font-medium"
+                  } ${
+                    isScrolled
+                      ? "text-[#133f65] hover:text-[#e37329]"
+                      : "text-[#133f65] hover:text-[#e37329]"
+                  }`}
+                  onClick={handleNavClick("testimonios")}
+                >
+                  Testimonios
+                </a>
+              </div>
+              <div className="mt-1">
+                <span className="text-xs text-primary/70 bg-[#ffd9c0] px-3 py-1 rounded-full font-bold">
+                  Lunes a Viernes: 8am - 5pm | Sábados: 8am - 12pm
+                </span>
+              </div>
+            </div>
             <a
               href="https://wa.link/kzwr6o"
               target="_blank"

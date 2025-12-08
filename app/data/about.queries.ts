@@ -6,6 +6,7 @@ import type {
   GalerySliderBlock,
 } from "../types/strapi-dynamic";
 import { GET_ABOUT_QUERY } from "./const";
+import { getStrapiMediaUrl } from "../lib/strapi-media";
 
 // ------------------------------------------
 // 1. Tipado de la Respuesta GraphQL
@@ -21,7 +22,7 @@ export type About = {
   title: string;
   description: BlocksContent;
   keyStats: Array<{ id: string; value: string; label: string }>;
-  image?: StrapiUploadFile;
+  images: StrapiUploadFile[];
 };
 
 // Detail es un tipo de unión de todos los posibles bloques dinámicos
@@ -52,21 +53,19 @@ export async function getAboutPageData(): Promise<About> {
       {}, // No variables needed for this query
       60 // Cache for 60 seconds
     );
-
-    //console.log("🚀 GraphQL Response:", JSON.stringify(response, null, 2));
-
-    // graphqlFetch devuelve directamente el objeto data de GraphQL
-    const pageData = response.about;
-
-    
-
-    console.log("✅ About Page Data:", {
-      documentId: pageData.documentId,
-      title: pageData.title,
-    });
-
-    // Devolvemos los datos limpios, listos para usar en un Server Component.
-    return pageData;
+    console.log("🚀 GraphQL Response:", JSON.stringify(response, null, 2));
+    // Devolvemos los atributos de manera plana y unificada
+    return {
+      documentId: response.about.documentId,
+      title: response.about.title,
+      description: response.about.description,
+      images: response.about.images.map((image) => ({
+        ...image,
+        imageUrl: getStrapiMediaUrl(image.formats?.thumbnail?.url || image.url),
+      })),
+      keyStats: response.about.keyStats,
+      // ... otros campos
+    };
   } catch (error) {
     console.error("❌ Error fetching About page data:", error);
     throw error;

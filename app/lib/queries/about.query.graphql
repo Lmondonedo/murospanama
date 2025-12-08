@@ -12,7 +12,7 @@ query About {
       value
       label
     }
-    image {
+    images {
       documentId
       name
       alternativeText

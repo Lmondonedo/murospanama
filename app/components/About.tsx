@@ -1,18 +1,11 @@
+"use client";
 import { About as AboutData } from "@/app/data/about.queries";
 import { StrapiRichText } from "./ui/StrapiRichText";
-import { getStrapiMediaUrl } from "../lib/strapi-media";
-import Image from "next/image";
 import { FaStar } from "@react-icons/all-files/fa/FaStar";
 import { HiLightBulb } from "@react-icons/all-files/hi/HiLightBulb";
+import ImageSlider from "./ui/ImageSlider";
 
 export default function About({ aboutData }: { aboutData: AboutData }) {
-  const strapiImage = aboutData?.image;
-  const imageFormat =
-    strapiImage?.formats?.medium || strapiImage?.formats?.large || strapiImage;
-  const imageUrl = getStrapiMediaUrl(imageFormat?.url);
-  const imageWidth = imageFormat?.width || 800;
-  const imageHeight = imageFormat?.height || 1000;
-  const imageAlt = strapiImage?.alternativeText || "Imagen de Muros Panamá";
 
   return (
     <section
@@ -69,28 +62,8 @@ export default function About({ aboutData }: { aboutData: AboutData }) {
             </div>
           </div>
 
-          {/* Right Content - Image */}
-          <div className="relative">
-            {/* Solo renderizar si tenemos una URL válida */}
-            {imageUrl ? (
-              <div className="rounded-xl shadow-2xl overflow-hidden transform transition-transform duration-500">
-                <Image
-                  src={imageUrl}
-                  alt={imageAlt} // Accesibilidad/SEO
-                  width={imageWidth}
-                  height={imageHeight}
-                  priority={true} // Performance
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            ) : (
-              // Fallback visual si no hay imagen configurada
-              <div className="h-[500px] w-full bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 border border-dashed">
-                [Image Placeholder]
-              </div>
-            )}
-          </div>
+          {/* Right Content - Image Slider */}
+          <ImageSlider images={aboutData.images} />
         </div>
       </div>
     </section>
