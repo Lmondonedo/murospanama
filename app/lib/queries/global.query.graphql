@@ -1,28 +1,7 @@
 query Global {
   global {
     documentId
-    siteName
-    mainLogo {
-      documentId
-      name
-      alternativeText
-      caption
-      width
-      height
-      formats
-      hash
-      ext
-      mime
-      size
-      url
-      previewUrl
-      provider
-      provider_metadata
-
-      createdAt
-      updatedAt
-      publishedAt
-    }
+    siteName    
     favicon {
       documentId
       name

@@ -1,0 +1,50 @@
+query Company {
+  company {
+    documentId
+    name
+    instagram
+    email
+    address
+    telephone
+    phone
+    mapLocation
+    schedule {
+      id
+      day
+      open
+      close
+      isOpen
+    }
+    createdAt
+    updatedAt
+    publishedAt
+    logo {
+      documentId
+      name
+      alternativeText
+      caption
+      width
+      height
+      formats
+      hash
+      ext
+      mime
+      size
+      url
+      previewUrl
+      provider
+      provider_metadata
+      createdAt
+      updatedAt
+      publishedAt
+    }
+    scheduleExceptions {
+      id
+      date
+      state
+      reason
+      open
+      close
+    }
+  }
+}

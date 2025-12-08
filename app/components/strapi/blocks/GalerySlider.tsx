@@ -163,7 +163,6 @@ export default function GalerySlider(props: GalerySliderProps) {
                   src={img.url} // URL completa desde normalizeItems
                   alt={img.alt} // Texto alternativo para accesibilidad
                   fill // La imagen llena todo el contenedor
-                  unoptimized // Sin optimización (puedes quitarlo en producción)
                   priority={idx === 0} // Prioridad para la primera imagen
                   sizes="(max-width: 768px) 85vw, (max-width: 1024px) 60vw, 40rem"
                   className="object-cover" // La imagen cubre todo el área
