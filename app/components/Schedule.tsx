@@ -101,7 +101,7 @@ export default function Schedule({ schedule, scheduleExceptions }: ScheduleProps
     && scheduleInfo.isOpen 
     && scheduleInfo.isWithinHours
     ? 'bg-green-100' // Verde pastel si está abierto
-    : 'bg-red-300';   // Rojo pastel si está cerrado
+    : 'bg-red-200';   // Rojo pastel si está cerrado
 
   return (
     <div className={`text-xs text-primary/70 ${bgColor} px-3 py-1 rounded-full font-bold`}>
@@ -112,7 +112,7 @@ export default function Schedule({ schedule, scheduleExceptions }: ScheduleProps
             {scheduleInfo.reason}: {formatTimeRange(scheduleInfo.open, scheduleInfo.close)}
           </span>
         ) : (
-          <span>{scheduleInfo.isOpen ? 'Cerrado' : scheduleInfo.reason}</span>
+          <span>{scheduleInfo.isOpen ? 'Cerrado' : `Cerrado por: ${scheduleInfo.reason}`}</span>
         )
       ) : scheduleInfo.type === 'regular' ? (
         // Mostrar horario regular
@@ -121,7 +121,7 @@ export default function Schedule({ schedule, scheduleExceptions }: ScheduleProps
             Abiertos de: {formatTimeRange(scheduleInfo.open, scheduleInfo.close)}
           </span>
         ) : (
-          <span>Actualmente Cerrado</span>
+          <span>Actualmente Cerrado </span>
         )
       ) : (
         // Fallback
