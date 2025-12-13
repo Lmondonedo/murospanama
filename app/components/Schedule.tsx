@@ -60,13 +60,13 @@ export default function Schedule({ schedule, scheduleExceptions }: ScheduleProps
       'Domingo',
       'Lunes',
       'Martes',
-      'Miércoles',
+      'Miercoles',
       'Jueves',
       'Viernes',
-      'Sábado',
+      'Sabado',
     ];
     const todayDayName = dayNames[dayOfWeek];
-    
+    console.log('Hoy es:', todayDayName);
     // Buscar el horario regular para hoy
     const regularSchedule = schedule.find(
       (s) => s.day.toLowerCase() === todayDayName.toLowerCase()
